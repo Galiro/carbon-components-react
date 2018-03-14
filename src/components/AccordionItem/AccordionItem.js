@@ -11,17 +11,19 @@ export default class AccordionItem extends Component {
     open: PropTypes.bool,
     onClick: PropTypes.func,
     onHeadingClick: PropTypes.func,
+    disabled: ProtoTypes.bool,
   };
 
   static defaultProps = {
     title: 'title',
     open: false,
+    disabled: false,
     onClick: () => {},
     onHeadingClick: () => {},
   };
 
   state = {
-    open: this.props.open,
+    open: this.props.open && !disabled,
   };
 
   componentWillReceiveProps({ open }) {
