@@ -9,6 +9,7 @@ export default class AccordionItem extends Component {
     className: PropTypes.string,
     title: PropTypes.string,
     open: PropTypes.bool,
+    disabled: PropTypes.bool,
     onClick: PropTypes.func,
     onHeadingClick: PropTypes.func,
   };
@@ -16,6 +17,7 @@ export default class AccordionItem extends Component {
   static defaultProps = {
     title: 'title',
     open: false,
+    disabled: false,
     onClick: () => {},
     onHeadingClick: () => {},
   };
@@ -35,7 +37,7 @@ export default class AccordionItem extends Component {
   };
 
   handleHeadingClick = evt => {
-    const open = !this.state.open;
+    const open = !this.state.open && !disabled;
     this.setState({ open });
     this.props.onHeadingClick({ isOpen: open, event: evt });
   };
